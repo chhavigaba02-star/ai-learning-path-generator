@@ -1,0 +1,321 @@
+AI-Powered Learning Path Generator
+Hybrid Recommendation + ML Ranking + RAG + LLM Integration
+1. Introduction
+
+The AI-Powered Learning Path Generator is a personalized roadmap generation system that combines:
+
+Database-driven course retrieval
+
+Machine Learning-based recommendation ranking
+
+Retrieval-Augmented Generation (RAG)
+
+Large Language Model (LLM) reasoning
+
+Web-based interactive interface
+
+The system generates structured learning paths based on a user’s:
+
+Current skill level
+
+Area of interest
+
+Career goal
+
+2. Problem Statement
+
+Learners often struggle with:
+
+Choosing the right starting point
+
+Identifying structured progression
+
+Understanding prerequisites
+
+Aligning learning paths with career goals
+
+This project solves the problem by combining traditional recommendation systems with LLM-based reasoning to generate structured, explainable learning roadmaps.
+
+3. System Architecture
+High-Level Flow
+User Input (Web Interface)
+        ↓
+Recommendation Engine
+        ↓
+ML Ranking
+        ↓
+Database Retrieval
+        ↓
+RAG + LLM Processing
+        ↓
+Structured Learning Path Output
+4. Project Modules
+🔹 4.1 database.py
+
+Responsible for:
+
+Connecting to database
+
+Fetching course data
+
+Executing filtered queries
+
+Returning structured course records
+
+Key Responsibilities:
+
+Data retrieval
+
+Query abstraction
+
+Data formatting for ML module
+
+🔹 4.2 tables.py
+
+Defines:
+
+Database schema
+
+Table structure
+
+Column definitions
+
+Example fields:
+
+course_name
+
+organization
+
+difficulty
+
+rating
+
+category
+
+Used during database initialization.
+
+🔹 4.3 ml_recommendation.py
+
+Implements machine learning-based scoring logic.
+
+Features:
+
+Course relevance scoring
+
+Difficulty-level matching
+
+Rating-weighted ranking
+
+Interest similarity computation
+
+Purpose:
+To move beyond simple filtering and create intelligent course ranking.
+
+🔹 4.4 recommendation.py
+
+Acts as the orchestration layer.
+
+Responsibilities:
+
+Calls database module
+
+Applies ML ranking
+
+Returns ordered course list
+
+Prepares formatted results for LLM
+
+This forms the Hybrid Recommendation Engine.
+
+🔹 4.5 llm.py
+
+Handles:
+
+LLM client initialization
+
+Prompt engineering
+
+Retrieval-Augmented Generation
+
+Structured roadmap creation
+
+Pipeline:
+
+Receives ranked course data
+
+Formats structured prompt
+
+Sends to LLM (Gemini / GPT)
+
+Generates:
+
+Beginner roadmap
+
+Intermediate progression
+
+Advanced roadmap
+
+Justifications
+
+Suggested order
+
+🔹 4.6 app.py
+
+Streamlit-based web interface.
+
+Features:
+
+User input form
+
+Level selection dropdown
+
+Interest input field
+
+Goal description field
+
+“Generate Learning Path” button
+
+Roadmap display section
+
+Expandable recommendations
+
+Provides interactive frontend for the system.
+
+5. Technologies Used
+
+Python
+
+Streamlit
+
+SQLite
+
+Scikit-learn
+
+Google Gemini API
+
+dotenv for environment management
+
+6. Hybrid Recommendation Strategy
+
+The system combines:
+
+1) Content-Based Filtering
+
+Matches course topics with user interests.
+
+2)ML-Based Ranking
+
+Uses weighted scoring based on:
+
+Rating
+
+Difficulty match
+
+Interest similarity
+
+3) RAG + LLM Reasoning
+
+Enhances recommendations by:
+
+Structuring progression
+
+Explaining course importance
+
+Creating logical learning order
+
+This creates a multi-layered intelligent system.
+
+7. Retrieval-Augmented Generation (RAG)
+
+RAG is implemented by:
+
+Retrieving relevant course data from database
+
+Injecting structured course data into prompt
+
+Using LLM to generate enriched roadmap
+
+This prevents hallucination and ensures grounded output.
+
+8. Security Practices
+
+API keys stored in .env
+
+.env excluded using .gitignore
+
+No secrets stored in repository
+
+Environment variable loading using dotenv
+
+9.Installation & Setup
+Clone Repository
+git clone <repo_url>
+cd ai-learning-path-generator
+Install Dependencies
+pip install -r requirements.txt
+Configure Environment Variables
+
+Create .env:
+
+GOOGLE_API_KEY=your_api_key_here
+Run Application
+streamlit run app.py
+10.) Example Workflow
+
+User selects: Beginner
+
+User enters: Machine Learning, Python
+
+User goal: Become AI Engineer
+
+System:
+
+Fetches relevant courses
+
+Ranks them using ML
+
+Sends structured context to LLM
+
+Generates roadmap
+
+Displays structured plan in UI
+
+11.) Future Enhancements
+
+User authentication
+
+Progress tracking
+
+Weekly planner generation
+
+PDF export
+
+Deployment on cloud
+
+Real-time market demand integration
+
+Vector database for advanced RAG
+
+12. Learning Outcomes
+
+This project demonstrates understanding of:
+
+API integration
+
+LLM prompt engineering
+
+RAG pipeline design
+
+Hybrid recommendation systems
+
+Modular architecture
+
+Web application development
+
+Secure key management
+
+13. Conclusion
+
+The AI Learning Path Generator integrates traditional recommendation systems with modern LLM capabilities to produce explainable, structured, and personalized learning roadmaps.
+
+It represents a scalable foundation for future AI-driven educational platforms.
